@@ -1,7 +1,6 @@
-<h3>{$title_section}</h3>
 {$form_start}
 <fieldset>
-<legend>Edit Item</legend>
+<legend>{$title_section}/legend>
 <div class="pageoverflow">
 	<p class="pagetext">
 		{$title_item_title}:

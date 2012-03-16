@@ -21,6 +21,7 @@ $lang['restore'] = 'Restore';
 $lang['cancel'] = 'Cancel';
 // Tabs
 $lang['title_items'] = 'Items';
+$lang['title_exportitems'] = 'Export Items';
 $lang['title_templates'] = 'Templates';
 $lang['title_options'] = 'Options';
 //Templates
@@ -47,7 +48,8 @@ $lang['xml'] = 'XML';
 $lang['rss'] = 'RSS';
 $lang['atom'] = 'Atom';
 $lang['json'] = 'JSON';
-
+//Export Items
+$lang['exportitem_url'] = 'File URL';
 $lang['template_help'] = 'You can use the {$xml} parameter for your template (see help for more information).';
 
 $lang['changelog'] = '<ul>

@@ -31,7 +31,7 @@ if (!$this->CheckAccess()) {
 }
 
 if (isset($params['cancel'])) {
-    $this -> Redirect($id, 'defaultadmin', $returnid);
+    $this->Redirect($id, 'defaultadmin', $returnid);
 }
 if (!isset($params['item_id']) || !($item = MultiParser_utils::retrieveById($params['item_id']))) {
     $item = new MultiParser_utils();

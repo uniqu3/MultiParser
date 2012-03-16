@@ -29,30 +29,24 @@ if (!is_object(cmsms())) exit;
 if (!$this->CheckAccess()) {
     return $this->DisplayErrorPage($id, $params, $returnid, $this->Lang('accessdenied'));
 }
-// return to active tab
-if (!empty($params['active_tab'])) {
-    $tab = $params['active_tab'];
-} else {
-    $tab = 'items';
+
+if (isset($params['cancel'])) {
+    $this->Redirect($id, 'defaultadmin', $returnid);
 }
 
-$smarty->assign('tab_headers', $this->StartTabHeaders() . $this->SetTabHeader('items', $this->Lang('title_items'), ($tab == 'items')) . $this->SetTabHeader('templates', $this->Lang('title_templates'), ($tab == 'templates')) . $this->SetTabHeader('exportitems', $this->Lang('title_exportitems'), ($tab == 'exportitems')) . $this->SetTabHeader('options', $this->Lang('title_options'), (isset($params['submit_options']) ? true : false), ($tab == 'otions')) . $this->EndTabHeaders() . $this->StartTabContent());
-$smarty->assign('end_tab', $this->EndTab());
-$smarty->assign('tab_footers', $this->EndTabContent());
-$smarty->assign('start_items_tab', $this->StartTab('items'), ($tab == 'items'));
-$smarty->assign('start_exportitems_tab', $this->StartTab('exportitems'), ($tab == 'exportitems'));
-$smarty->assign('start_templates_tab', $this->StartTab('templates'), ($tab == 'templates'));
-$smarty->assign('start_options_tab', $this->StartTab('options'), ($tab == 'options'));
-$smarty->assign('title_section', 'defaultadmin');
+/* TODO
+ * get item
+ */
+$smarty->assign('form_start', $this->CreateFormStart($id, 'manage_exportitem', $returnid));
 
-// Items
-include dirname(__FILE__) . '/function.admin_itemstab.php';
-// Templates
-include dirname(__FILE__) . '/function.admin_templatestab.php';
-// Export
-include dirname(__FILE__) . '/function.admin_exportitemstab.php';
-// Options
-include dirname(__FILE__) . '/function.admin_optionstab.php';
+/* TODO
+ * create form fields
+ */
 
-echo $this->ProcessTemplate('adminpanel.tpl');
+$smarty->assign('cancel', $this->CreateInputSubmit($id, 'cancel', $this->Lang('cancel')));
+$smarty->assign('submit_button', $this->CreateInputSubmit($id, 'submit', $this->Lang('submit')));
+$smarty->assign('apply_button', $this->CreateInputSubmit($id, 'apply', $this->Lang('apply')));
+$smarty->assign('form_end', $this->CreateFormEnd());
+
+echo $this->ProcessTemplate('admin.manage_exportitem.tpl');
 ?>

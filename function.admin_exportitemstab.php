@@ -25,34 +25,23 @@
 # Or read it online: http://www.gnu.org/licenses/licenses.html#GPL
 #
 #-------------------------------------------------------------------------
-if (!is_object(cmsms())) exit;
 if (!$this->CheckAccess()) {
     return $this->DisplayErrorPage($id, $params, $returnid, $this->Lang('accessdenied'));
 }
-// return to active tab
-if (!empty($params['active_tab'])) {
-    $tab = $params['active_tab'];
-} else {
-    $tab = 'items';
-}
 
-$smarty->assign('tab_headers', $this->StartTabHeaders() . $this->SetTabHeader('items', $this->Lang('title_items'), ($tab == 'items')) . $this->SetTabHeader('templates', $this->Lang('title_templates'), ($tab == 'templates')) . $this->SetTabHeader('exportitems', $this->Lang('title_exportitems'), ($tab == 'exportitems')) . $this->SetTabHeader('options', $this->Lang('title_options'), (isset($params['submit_options']) ? true : false), ($tab == 'otions')) . $this->EndTabHeaders() . $this->StartTabContent());
-$smarty->assign('end_tab', $this->EndTab());
-$smarty->assign('tab_footers', $this->EndTabContent());
-$smarty->assign('start_items_tab', $this->StartTab('items'), ($tab == 'items'));
-$smarty->assign('start_exportitems_tab', $this->StartTab('exportitems'), ($tab == 'exportitems'));
-$smarty->assign('start_templates_tab', $this->StartTab('templates'), ($tab == 'templates'));
-$smarty->assign('start_options_tab', $this->StartTab('options'), ($tab == 'options'));
-$smarty->assign('title_section', 'defaultadmin');
+$admintheme  = cmsms()->get_variable('admintheme');
+$exportitems = '';
+/* TODO
+ * get saved items
+ */
 
-// Items
-include dirname(__FILE__) . '/function.admin_itemstab.php';
-// Templates
-include dirname(__FILE__) . '/function.admin_templatestab.php';
-// Export
-include dirname(__FILE__) . '/function.admin_exportitemstab.php';
-// Options
-include dirname(__FILE__) . '/function.admin_optionstab.php';
+$smarty->assign('exportitems', $exportitems);
+$smarty->assign('exportitem_title', $this->Lang('item_title'));
+$smarty->assign('exportitem_type', $this->Lang('item_type'));
+$smarty->assign('exportitem_url', $this->Lang('exportitem_url'));
+$smarty->assign('exportitem_description', $this->Lang('item_description'));
 
-echo $this->ProcessTemplate('adminpanel.tpl');
+$smarty-> assign('add_exportitem_link', $this->CreateLink($id, 'manage_exportitem', '', $this->Lang('title_add_item'), array()));
+$smarty-> assign('add_exportitem_icon', $this->CreateLink($id, 'manage_exportitem', '', $admintheme->DisplayImage('icons/system/newobject.gif', $this -> Lang('title_add_item'), '', '', 'systemicon'), array()));
+$smarty->assign('exportitems_tab', $this->ProcessTemplate('admin.exportitems_tab.tpl'));
 ?>
