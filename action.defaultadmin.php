@@ -36,7 +36,7 @@ if (!empty($params['active_tab'])) {
     $tab = 'items';
 }
 
-$smarty->assign('tab_headers', $this->StartTabHeaders() . $this->SetTabHeader('items', $this->Lang('title_items'), ($tab == 'items')) . $this->SetTabHeader('templates', $this->Lang('title_templates'), ($tab == 'templates')) . $this->SetTabHeader('exportitems', $this->Lang('title_exportitems'), ($tab == 'exportitems')) . $this->SetTabHeader('options', $this->Lang('title_options'), (isset($params['submit_options']) ? true : false), ($tab == 'otions')) . $this->EndTabHeaders() . $this->StartTabContent());
+$smarty->assign('tab_headers', $this->StartTabHeaders() . $this->SetTabHeader('items', $this->Lang('title_items'), ($tab == 'items')) . $this->SetTabHeader('templates', $this->Lang('title_templates'), ($tab == 'templates')) . $this->SetTabHeader('exportitems', $this->Lang('title_exportitems'), ($tab == 'exportitems')) . $this->SetTabHeader('options', $this->Lang('title_options'), (isset($params['submit_options']) ? true : false), ($tab == 'options')) . $this->EndTabHeaders() . $this->StartTabContent());
 $smarty->assign('end_tab', $this->EndTab());
 $smarty->assign('tab_footers', $this->EndTabContent());
 $smarty->assign('start_items_tab', $this->StartTab('items'), ($tab == 'items'));

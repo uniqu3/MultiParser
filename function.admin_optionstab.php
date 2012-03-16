@@ -58,7 +58,7 @@ if (isset($params['auth_url']) && $params['auth_url'] != '') {
 $sites = array();
 
 foreach ($auth_sites as $site) {
-    $sites[] = array('url' => $site, 'delete' => $this->CreateLink($id, 'delete_auth_url', $returnid, $admintheme->DisplayImage('icons/system/delete.gif', $site, '', '', 'systemicon'), array('url' => $site), ''));
+    $sites[] = array('url' => $site, 'delete' => $this->CreateLink($id, 'admin_delete_auth_url', $returnid, $admintheme->DisplayImage('icons/system/delete.gif', $site, '', '', 'systemicon'), array('url' => $site), ''));
 }
 
 $smarty->assign('auth_sites', $sites);

@@ -41,7 +41,7 @@ $smarty->assign('exportitem_type', $this->Lang('item_type'));
 $smarty->assign('exportitem_url', $this->Lang('exportitem_url'));
 $smarty->assign('exportitem_description', $this->Lang('item_description'));
 
-$smarty-> assign('add_exportitem_link', $this->CreateLink($id, 'manage_exportitem', '', $this->Lang('title_add_item'), array()));
-$smarty-> assign('add_exportitem_icon', $this->CreateLink($id, 'manage_exportitem', '', $admintheme->DisplayImage('icons/system/newobject.gif', $this -> Lang('title_add_item'), '', '', 'systemicon'), array()));
+$smarty-> assign('add_exportitem_link', $this->CreateLink($id, 'admin_manage_exportitem', '', $this->Lang('title_add_item'), array()));
+$smarty-> assign('add_exportitem_icon', $this->CreateLink($id, 'admin_manage_exportitem', '', $admintheme->DisplayImage('icons/system/newobject.gif', $this -> Lang('title_add_item'), '', '', 'systemicon'), array()));
 $smarty->assign('exportitems_tab', $this->ProcessTemplate('admin.exportitems_tab.tpl'));
 ?>

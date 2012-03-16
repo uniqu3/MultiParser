@@ -48,7 +48,7 @@ if (isset($params['template']) && $params['template'] != '') {
 
 // DETAILS
 
-$smarty->assign('form_start', $this->CreateFormStart($id, 'manage_template', $returnid));
+$smarty->assign('form_start', $this->CreateFormStart($id, 'admin_manage_template', $returnid));
 
 $smarty->assign('title_template', $this->Lang('title_template'));
 $smarty->assign('input_template', $this->CreateInputText($id, 'template', $title, 50));

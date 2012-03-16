@@ -44,7 +44,18 @@ class MultiParser extends CMSModule {
     }
 
     function GetHelp() {
-        return $this->Lang('help');
+        $smarty = cmsms()->GetSmarty();
+        
+        $smarty->assign('help_general_title', $this->Lang('help_general_title'));
+        $smarty->assign('help_general_text', $this->Lang('help_general_text'));
+        $smarty->assign('help_templates_title', $this->Lang('help_templates_title'));
+        $smarty->assign('help_templates_text', $this->Lang('help_templates_text'));
+        $smarty->assign('help_export_title', $this->Lang('help_export_title'));
+        $smarty->assign('help_export_text', $this->Lang('help_export_text'));
+        $smarty->assign('help_about_title', $this->Lang('help_about_title'));
+        $smarty->assign('help_about_text', $this->Lang('help_about_text'));
+
+        return $this -> ProcessTemplate('help.tpl');
     }
 
     function GetAuthor() {
@@ -85,8 +96,8 @@ class MultiParser extends CMSModule {
     }
 
     function DisplayErrorPage($id, &$params, $return_id, $message = '') {
-        $this->smarty->assign('title_error', $this->Lang('error'));
-        $this->smarty->assign_by_ref('message', $message);
+        $smarty->assign('title_error', $this->Lang('error'));
+        $smarty->assign_by_ref('message', $message);
 
         echo $this->GetTemplateFromFile('error');
     }
@@ -138,7 +149,7 @@ class MultiParser extends CMSModule {
 
     function InitializeAdmin() {
         $this->CreateParameter('action', 'default', $this->Lang('help_param_action'));
-        $this->CreateParameter('item_id', '', $this->Lang('help_param_item_id'));
+        $this->CreateParameter('item_id', '', $this->Lang('help_param_item_id'), $optional = false);
         $this->CreateParameter('items_id', '', $this->Lang('help_param_items_id'));
         $this->CreateParameter('max_items', '', $this->Lang('help_param_max_items'));
         $this->CreateParameter('sort_by_date', '', $this->Lang('help_param_sort_by_date'));

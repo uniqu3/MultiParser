@@ -1,6 +1,7 @@
 {$form_start}
+{$item_id}
 <fieldset>
-<legend>{$title_section}/legend>
+<legend>{$title_section}</legend>
 <div class="pageoverflow">
 	<p class="pagetext">
 		{$title_item_title}:

@@ -49,9 +49,10 @@ if (isset($params['submit']) || isset($params['apply'])) {
     }
 }
 
-$smarty->assign('form_start', $this->CreateFormStart($id, 'manage_item', $returnid));
+$smarty->assign('form_start', $this->CreateFormStart($id, 'admin_manage_item', $returnid));
 
-$smarty->assign('title_item_title', $this->Lang('title_item_title'));
+$smarty->assign('title_section', $this->Lang('title_section'));
+$smarty->assign('title_item_title', $this->Lang('item_title'));
 $smarty->assign('input_item_title', $this->CreateInputText($id, 'item_title', $item->getTitle(), 50));
 $smarty->assign('item_types', $this->Lang('item_type'));
     $types = array(
@@ -67,7 +68,7 @@ $smarty->assign('title_item_description', $this->Lang('title_item_description'))
 $smarty->assign('input_item_description', $this->CreateTextArea(false, $id, $item->getItemDescription(), 'item_description', 'pagesmalltextarea', '', '', '', '40', '10'));
 
 if ($item->getId()) {
-    $smarty->assign('item_id', $this -> CreateInputHidden($id, 'item_id', $item->getId()));
+    $smarty->assign('item_id', $this->CreateInputHidden($id, 'item_id', $item->getId()));
 }
 
 $smarty->assign('cancel', $this->CreateInputSubmit($id, 'cancel', $this->Lang('cancel')));

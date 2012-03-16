@@ -25,25 +25,8 @@
 # Or read it online: http://www.gnu.org/licenses/licenses.html#GPL
 #
 #-------------------------------------------------------------------------
-if (!$this->CheckAccess()) {
-    return $this->DisplayErrorPage($id, $params, $returnid, $this->Lang('accessdenied'));
-}
-
-$template_list = $this->ListTemplates();
-$templates     = array();
-
-foreach ($template_list as $template) {
-    $onerow = new stdClass();
-
-    $onerow->name       = $template;
-    $onerow->deletelink = $this->CreateLink($id, 'admin_delete_template', $returnid, $admintheme->DisplayImage('icons/system/delete.gif', $this->Lang('delete_template'), '', '', 'systemicon'), array('template' => $template), $this->Lang('areyousure'));
-    $onerow->editlink   = $this->CreateLink($id, 'admin_manage_template', $returnid, $admintheme->DisplayImage('icons/system/edit.gif', $this->Lang('edit_template'), '', '', 'systemicon'), array('template' => $template));
-    $templates[]        = $onerow;
-}
-
-$smarty->assign('templates', $templates);
-$smarty->assign('title_template', $this->Lang('title_template'));
-$smarty->assign('addtemplatelink', $this->CreateLink($id, 'admin_manage_template', '', $this -> Lang('title_add_template'), array()));
-$smarty->assign('addtemplateicon', $this->CreateLink($id, 'admin_manage_template', '', $admintheme -> DisplayImage('icons/system/newobject.gif', $this->Lang('title_add_template'), '', '', 'systemicon'), array()));
-$smarty->assign('templates_tab', $this->ProcessTemplate('admin.templates_tab.tpl'));
+if (!is_object(cmsms())) exit;
+/* TODO
+ * generate a url to exported file
+ */
 ?>

@@ -33,9 +33,9 @@ $admintheme = cmsms()->get_variable('admintheme');
 $items      = MultiParser_utils::doSelect();
 
 foreach ($items as $item) {
-    $item->edit_url = $this->CreateLink($id, 'manage_item', $returnid, $item->getTitle(), array('item_id' => $item->getId()), '');
-    $item->edit     = $this->CreateLink($id, 'manage_item', $returnid, $admintheme->DisplayImage('icons/system/edit.gif', $item->getTitle(), '', '', 'systemicon'), array('item_id' => $item->getId()), '');
-    $item->delete   = $this->CreateLink($id, 'delete_item', $returnid, $admintheme->DisplayImage('icons/system/delete.gif', $item->getTitle(), '', '', 'systemicon'), array('item_id' => $item->getId()), '');
+    $item->edit_url = $this->CreateLink($id, 'admin_manage_item', $returnid, $item->getTitle(), array('item_id' => $item->getId()), '');
+    $item->edit     = $this->CreateLink($id, 'admin_manage_item', $returnid, $admintheme->DisplayImage('icons/system/edit.gif', $item->getTitle(), '', '', 'systemicon'), array('item_id' => $item->getId()), '');
+    $item->delete   = $this->CreateLink($id, 'admin_delete_item', $returnid, $admintheme->DisplayImage('icons/system/delete.gif', $item->getTitle(), '', '', 'systemicon'), array('item_id' => $item->getId()), '');
 }
 
 $smarty->assign('items', $items);
@@ -45,7 +45,7 @@ $smarty->assign('item_description', $this->Lang('item_description'));
 $smarty->assign('item_url', $this->Lang('item_url'));
 $smarty->assign('item_tag', $this->Lang('item_tag'));
 
-$smarty-> assign('add_item_link', $this->CreateLink($id, 'manage_item', '', $this->Lang('title_add_item'), array()));
-$smarty-> assign('add_item_icon', $this->CreateLink($id, 'manage_item', '', $admintheme->DisplayImage('icons/system/newobject.gif', $this -> Lang('title_add_item'), '', '', 'systemicon'), array()));
+$smarty->assign('add_item_link', $this->CreateLink($id, 'admin_manage_item', '', $this->Lang('title_add_item'), array()));
+$smarty->assign('add_item_icon', $this->CreateLink($id, 'admin_manage_item', '', $admintheme->DisplayImage('icons/system/newobject.gif', $this -> Lang('title_add_item'), '', '', 'systemicon'), array()));
 $smarty->assign('items_tab', $this->ProcessTemplate('admin.items_tab.tpl'));
 ?>
