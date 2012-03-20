@@ -26,26 +26,14 @@
 # Or read it online: http://www.gnu.org/licenses/licenses.html#GPL
 #
 #-------------------------------------------------------------------------
-if (!$this->CheckAccess()) {
+if (!is_object(cmsms())) exit;
+if (!$this->CheckAccess('Manage MultiParser')) {
     return $this->DisplayErrorPage($id, $params, $returnid, $this->Lang('accessdenied'));
 }
 
-$admintheme  = cmsms()->get_variable('admintheme');
-$exportitems = DoGetExport::doSelect();
+if (isset($params['item_id'])) {
+    DoGetExport::deleteById($params['item_id']);
+    $this->Redirect($id, 'defaultadmin', $returnid);
 
-foreach ($exportitems as $item) {
-    $item->edit_url = $this->CreateLink($id, 'admin_manage_exportitem', $returnid, $item->getTitle(), array('item_id' => $item->getId()), '');
-    $item->edit     = $this->CreateLink($id, 'admin_manage_exportitem', $returnid, $admintheme->DisplayImage('icons/system/edit.gif', $item->getTitle(), '', '', 'systemicon'), array('item_id' => $item->getId()), '');
-    $item->delete   = $this->CreateLink($id, 'admin_delete_exportitem', $returnid, $admintheme->DisplayImage('icons/system/delete.gif', $item->getTitle(), '', '', 'systemicon'), array('item_id' => $item->getId()), '');
 }
-
-$smarty->assign('exportitems', $exportitems);
-$smarty->assign('exportitem_title', $this->Lang('item_title'));
-$smarty->assign('exportitem_type', $this->Lang('item_type'));
-$smarty->assign('exportitem_url', $this->Lang('exportitem_url'));
-$smarty->assign('exportitem_description', $this->Lang('item_description'));
-
-$smarty-> assign('add_exportitem_link', $this->CreateLink($id, 'admin_manage_exportitem', '', $this->Lang('title_add_item'), array()));
-$smarty-> assign('add_exportitem_icon', $this->CreateLink($id, 'admin_manage_exportitem', '', $admintheme->DisplayImage('icons/system/newobject.gif', $this -> Lang('title_add_item'), '', '', 'systemicon'), array()));
-$smarty->assign('exportitems_tab', $this->ProcessTemplate('admin.exportitems_tab.tpl'));
 ?>

@@ -9,9 +9,7 @@
 		<tr>
 			<th>{$exportitem_title}</th>
 			<th>{$exportitem_type}</th>
-			<th>{$exportitem_url}</th>
 			<th>{$exportitem_description}</th>
-			<th>&nbsp;</th>
 			<th class="pageicon"></th>
 			<th class="pageicon"></th>
 		</tr>
@@ -19,11 +17,9 @@
 	<tbody>
 		{foreach from=$exportitems item='entry'}
 		<tr class="{cycle values='row1,row2'}">
-			<td>to do</td>
-			<td>to do</td>
-			<td>to do</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
+			<td>{$entry->GetTitle()}</td>
+			<td>{$entry->GetType()}</td>
+			<td>{$entry->GetItemDescription()}</td>
 			<td>{$entry->edit}</td>
 			<td>{$entry->delete}</td>
 		</tr>

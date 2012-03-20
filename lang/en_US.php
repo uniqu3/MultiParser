@@ -51,6 +51,9 @@ $lang['atom'] = 'Atom';
 $lang['json'] = 'JSON';
 //Export Items
 $lang['exportitem_url'] = 'File URL';
+$lang['title_item_template'] = 'Template';
+$lang['title_item_output'] = 'Generated Content';
+$lang['generated_template'] = 'Content Output';
 //Params
 $lang['help_param_action'] = 'Specifies the module action. Possible values are;
 <ul>

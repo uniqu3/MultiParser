@@ -1,13 +1,14 @@
 <?php
 #-------------------------------------------------------------------------
 # Module: MultiParser - This module lets you grab any XML, RSS or Atom Feed as well as JSON Data which you can integrate on your website.
-# This module is a fork from XMLMadeSimple created by Jean-Christophe Cuvelier.
-# Original Author: Jean-Christophe Cuvelier.
 # Fork Author: Goran Ilic - uniqu3e@gmail.com
+#-------------------------------------------------------------------------
+# Fork of Module: XMLMadeSimple - This module allow you to grab an XML or RSS feed and to integrate it in your website very easily. 
+# Version: 0.0.1, Jean-Christophe Cuvelier
+# Project Homepage: http://dev.cmsmadesimple.org/projects/xmlmadesimple
 #-------------------------------------------------------------------------
 # CMS - CMS Made Simple is (c) 2009 by Ted Kulp (wishy@cmsmadesimple.org)
 # This project's homepage is: http://www.cmsmadesimple.org
-#
 #-------------------------------------------------------------------------
 #
 # This program is free software; you can redistribute it and/or modify
@@ -36,11 +37,11 @@ if (!empty($params['active_tab'])) {
     $tab = 'items';
 }
 
-$smarty->assign('tab_headers', $this->StartTabHeaders() . $this->SetTabHeader('items', $this->Lang('title_items'), ($tab == 'items')) . $this->SetTabHeader('templates', $this->Lang('title_templates'), ($tab == 'templates')) . $this->SetTabHeader('exportitems', $this->Lang('title_exportitems'), ($tab == 'exportitems')) . $this->SetTabHeader('options', $this->Lang('title_options'), (isset($params['submit_options']) ? true : false), ($tab == 'options')) . $this->EndTabHeaders() . $this->StartTabContent());
+$smarty->assign('tab_headers', $this->StartTabHeaders() . $this->SetTabHeader('items', $this->Lang('title_items'), ($tab == 'items')) . $this->SetTabHeader('templates', $this->Lang('title_templates'), ($tab == 'templates')) . $this->SetTabHeader('exportitems', $this->Lang('title_exportitems')) . $this->SetTabHeader('options', $this->Lang('title_options'), (isset($params['submit_options']) ? true : false), ($tab == 'options')) . $this->EndTabHeaders() . $this->StartTabContent());
 $smarty->assign('end_tab', $this->EndTab());
 $smarty->assign('tab_footers', $this->EndTabContent());
 $smarty->assign('start_items_tab', $this->StartTab('items'), ($tab == 'items'));
-$smarty->assign('start_exportitems_tab', $this->StartTab('exportitems'), ($tab == 'exportitems'));
+$smarty->assign('start_exportitems_tab', $this->StartTab('exportitems'));
 $smarty->assign('start_templates_tab', $this->StartTab('templates'), ($tab == 'templates'));
 $smarty->assign('start_options_tab', $this->StartTab('options'), ($tab == 'options'));
 $smarty->assign('title_section', 'defaultadmin');

@@ -1,13 +1,14 @@
 <?php
 #-------------------------------------------------------------------------
 # Module: MultiParser - This module lets you grab any XML, RSS or Atom Feed as well as JSON Data which you can integrate on your website.
-# This module is a fork from XMLMadeSimple created by Jean-Christophe Cuvelier.
-# Original Author: Jean-Christophe Cuvelier.
 # Fork Author: Goran Ilic - uniqu3e@gmail.com
+#-------------------------------------------------------------------------
+# Fork of Module: XMLMadeSimple - This module allow you to grab an XML or RSS feed and to integrate it in your website very easily. 
+# Version: 0.0.1, Jean-Christophe Cuvelier
+# Project Homepage: http://dev.cmsmadesimple.org/projects/xmlmadesimple
 #-------------------------------------------------------------------------
 # CMS - CMS Made Simple is (c) 2009 by Ted Kulp (wishy@cmsmadesimple.org)
 # This project's homepage is: http://www.cmsmadesimple.org
-#
 #-------------------------------------------------------------------------
 #
 # This program is free software; you can redistribute it and/or modify
@@ -28,19 +29,10 @@
 if (!is_object(cmsms())) exit;
 
 if (isset($params['item_id'])) {
-    $item = MultiParser_utils::retrieveById($params['item_id']);
+    $item = DoGetItems::retrieveById($params['item_id']);
     $item->setAddParams(htmlspecialchars_decode($params['add_params']));
 
     $items = $item->getItem();
-/*    
-    if (isset($params['max_items'])) {
-        $entries = array();
-        foreach ((array)$items as $entry) {
-                $entries[] = $entry;
-        }
-        $items = array_slice($entries, 0, $params['max_items']);
-    }
-*/    
     $smarty->assign('items', $items); 
     
     if (isset($items->channel->item)) {

@@ -1,13 +1,14 @@
 <?php
 #-------------------------------------------------------------------------
 # Module: MultiParser - This module lets you grab any XML, RSS or Atom Feed as well as JSON Data which you can integrate on your website.
-# This module is a fork from XMLMadeSimple created by Jean-Christophe Cuvelier.
-# Original Author: Jean-Christophe Cuvelier.
 # Fork Author: Goran Ilic - uniqu3e@gmail.com
+#-------------------------------------------------------------------------
+# Fork of Module: XMLMadeSimple - This module allow you to grab an XML or RSS feed and to integrate it in your website very easily. 
+# Version: 0.0.1, Jean-Christophe Cuvelier
+# Project Homepage: http://dev.cmsmadesimple.org/projects/xmlmadesimple
 #-------------------------------------------------------------------------
 # CMS - CMS Made Simple is (c) 2009 by Ted Kulp (wishy@cmsmadesimple.org)
 # This project's homepage is: http://www.cmsmadesimple.org
-#
 #-------------------------------------------------------------------------
 #
 # This program is free software; you can redistribute it and/or modify
@@ -30,7 +31,7 @@ if (!$this->CheckAccess()) {
 }
 
 $admintheme = cmsms()->get_variable('admintheme');
-$items      = MultiParser_utils::doSelect();
+$items      = DoGetItems::doSelect();
 
 foreach ($items as $item) {
     $item->edit_url = $this->CreateLink($id, 'admin_manage_item', $returnid, $item->getTitle(), array('item_id' => $item->getId()), '');
@@ -46,6 +47,6 @@ $smarty->assign('item_url', $this->Lang('item_url'));
 $smarty->assign('item_tag', $this->Lang('item_tag'));
 
 $smarty->assign('add_item_link', $this->CreateLink($id, 'admin_manage_item', '', $this->Lang('title_add_item'), array()));
-$smarty->assign('add_item_icon', $this->CreateLink($id, 'admin_manage_item', '', $admintheme->DisplayImage('icons/system/newobject.gif', $this -> Lang('title_add_item'), '', '', 'systemicon'), array()));
+$smarty->assign('add_item_icon', $this->CreateLink($id, 'admin_manage_item', '', $admintheme->DisplayImage('icons/system/newobject.gif', $this->Lang('title_add_item'), '', '', 'systemicon'), array()));
 $smarty->assign('items_tab', $this->ProcessTemplate('admin.items_tab.tpl'));
 ?>
