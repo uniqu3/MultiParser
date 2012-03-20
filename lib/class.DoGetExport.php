@@ -13,7 +13,6 @@ class DoGetExport extends MultiParser_utils {
 
     protected function saveContents() {
         $mod = cmsms()->GetModuleInstance('MultiParser');
-        //file_put_contents($this->getCachePath(), $mod->ProcessTemplateFromData($this->GetItemContent()));
         file_put_contents($this->getCachePath(), $mod->ProcessTemplateFromData($this->GetItemContent()));
     }
 
