@@ -35,7 +35,7 @@ if (isset($params['cancel'])) {
     $this->Redirect($id, 'defaultadmin', $returnid);
 }
 if (!isset($params['item_id']) || !($item = DoGetItems::retrieveById($params['item_id']))) {
-    $item = new MultiParser_utils();
+    $item = new DoGetItems();
 }
 if (isset($params['submit']) || isset($params['apply'])) {
 

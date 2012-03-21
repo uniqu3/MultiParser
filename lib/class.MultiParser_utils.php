@@ -57,22 +57,6 @@ class MultiParser_utils extends MultiParser {
         $this->type = $type;
     }
 
-    public function setAddParams($string) {
-        $this->add_params = $string;
-    }
-
-    public static function compareEntryDates($a, $b) {
-        return strcmp($a['updated'], $b['updated']);
-    }
-
-    protected function getItemByCache() {
-        $this->contents = file_get_contents($this->getCachePath());
-    }
-
-    protected function setItemCache() {
-        file_put_contents($this->getCachePath(), $this->contents);
-    }
-
     protected function checkCache($lenght) {
         $file = $this->getCachePath();
 
@@ -81,7 +65,11 @@ class MultiParser_utils extends MultiParser {
         } else {
             return true;
         }
-    }
+    }        
+
+    public function setAddParams($string) {
+        $this->add_params = $string;
+    }    
 
     public function Populate($row) {
         if (isset($row['id'])) {

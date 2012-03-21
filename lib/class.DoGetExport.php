@@ -8,12 +8,14 @@ class DoGetExport extends MultiParser_utils {
     }
 
     protected function getCachePath() {
-        return TMP_CACHE_LOCATION . '/multiparserexport_' . $this->getId() . '.' . strtolower($this->GetType());
+        return TMP_CACHE_LOCATION . '/mp_' . munge_string_to_url($this->GetTitle() . $this->GetId(), true) . '.' . strtolower($this->GetType());
     }
 
     protected function saveContents() {
-        $mod = cmsms()->GetModuleInstance('MultiParser');
-        file_put_contents($this->getCachePath(), $mod->ProcessTemplateFromData($this->GetItemContent()));
+        $mod = cms_utils::get_module('MultiParser');
+        if ($mod->GetPreference('save_file') == 1) {
+            file_put_contents($this->getCachePath(), $mod->ProcessTemplateFromData($this->GetItemContent()));
+        }
     }
 
     public function save() {
@@ -130,3 +132,4 @@ class DoGetExport extends MultiParser_utils {
     }
 
 }
+?>

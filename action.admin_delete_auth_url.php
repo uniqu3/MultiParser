@@ -28,12 +28,12 @@
 #-------------------------------------------------------------------------
 if (!is_object(cmsms())) exit;
 if (!$this->CheckAccess()) {
-    return $this->DisplayErrorPage($id, $params, $returnid, $this -> Lang('accessdenied'));
+    return $this->DisplayErrorPage($id, $params, $returnid, $this->Lang('accessdenied'));
 }
 
 if (isset($params['url'])) {
 
-    $auth_sites = unserialize($this -> getPreference('auth_sites'));
+    $auth_sites = unserialize($this->getPreference('auth_sites'));
     $key        = array_search($params['url'], $auth_sites);
 
     if ($key !== false) {

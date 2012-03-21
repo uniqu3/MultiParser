@@ -42,7 +42,6 @@ $smarty->assign('cache_title', $this->Lang('cache'));
 $smarty->assign('cache', $this->CreateInputText($id, 'cache', $this->GetPreference('cache')));
 
 // Authorized sites
-
 $auth_sites = unserialize($this->getPreference('auth_sites'));
 
 if (!is_array($auth_sites)) {
@@ -52,7 +51,7 @@ if (!is_array($auth_sites)) {
 if (isset($params['auth_url']) && $params['auth_url'] != '') {
     if (array_search($params['auth_url'], $auth_sites) === false) {
         $auth_sites[] = $params['auth_url'];
-        $this->setPreference('auth_sites', serialize($auth_sites));
+        $this->SetPreference('auth_sites', serialize($auth_sites));
     }
 }
 
@@ -65,6 +64,13 @@ foreach ($auth_sites as $site) {
 $smarty->assign('auth_sites', $sites);
 $smarty->assign('auth_url_title', $this->Lang('auth_url'));
 $smarty->assign('auth_url', $this->CreateInputText($id, 'auth_url', null, 80));
+
+// Export items options
+$this->SetPreference('save_file', (isset($params['save_file']) ? 1 : 0));
+$smarty->assign('save_file_input', $this->CreateInputCheckbox($id, 'save_file', 1, $this->GetPreference('save_file')));
+
+$smarty->assign('export_title', $this->Lang('export_title'));
+$smarty->assign('save_file_title', $this->Lang('save_file_title'));
 
 $smarty->assign('submit_options', $this->CreateInputSubmit($id, 'submit_options', $this->Lang('submit')));
 $smarty->assign('cancel', $this->CreateInputSubmit($id, 'cancel', $this->Lang('cancel')));

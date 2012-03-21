@@ -17,7 +17,7 @@
 	<tbody>
 		{foreach from=$exportitems item='entry'}
 		<tr class="{cycle values='row1,row2'}">
-			<td>{$entry->GetTitle()}</td>
+			<td>{$entry->edit_url}</td>
 			<td>{$entry->GetType()}</td>
 			<td>{$entry->GetItemDescription()}</td>
 			<td>{$entry->edit}</td>

@@ -1,13 +1,11 @@
 <?php
 class DoGetItems extends MultiParser_utils {
-    var $contents;
-    var $add_params;
 
     const DB_NAME = 'module_multiparser_item';
 
     public function __construct() {
     }
-
+    
     public function getItemUrl() {
         $separator = '';
         if ($this->add_params)
@@ -19,10 +17,27 @@ class DoGetItems extends MultiParser_utils {
         $this->item_url = $value;
     }
 
-    public function setAddParams($string) {
-        $this->add_params = $string;
+    protected function getItemByUrl() {
+        $this->contents = file_get_contents($this->getItemUrl());
+        $this->saveByCache();
     }
 
+    protected function getItemByCache() {
+        $this->contents = file_get_contents($this->getCachePath());
+    } 
+
+    protected function getCachePath() {
+        return TMP_CACHE_LOCATION . '/mp_' . munge_string_to_url($this->GetTitle() . $this->getId(), true) . '.tmp';
+    }
+    
+    protected function saveByCache() {
+        file_put_contents($this->getCachePath(), $this->contents);
+    }        
+
+    public static function compareEntryDates($a, $b) {
+        return strcmp($a['updated'], $b['updated']);
+    }
+    
     public function getItem() {
 
         if ($module = cms_utils::get_module('MultiParser')) {
@@ -40,16 +55,7 @@ class DoGetItems extends MultiParser_utils {
         } else {
             return json_decode($this->contents);
         }
-    }
-
-    protected function getItemByUrl() {
-        $this->contents = file_get_contents($this->getItemUrl());
-        $this->setItemCache();
-    }
-
-    protected function getCachePath() {
-        return TMP_CACHE_LOCATION . '/multiparser_' . $this->getId() . '.tmp';
-    }
+    }   
 
     protected function update() {
 
@@ -142,6 +148,16 @@ class DoGetItems extends MultiParser_utils {
         return $items;
     }
 
+    public function save() {
+        if ($this->id != null) {
+            $this->update();
+
+        } else {
+            $this->insert();
+        }
+        $this->saveByCache();
+    }
+
     public function delete() {
         $db = cms_utils::get_db();
         $query = 'DELETE FROM ' . cms_db_prefix() . self::DB_NAME;
@@ -155,3 +171,4 @@ class DoGetItems extends MultiParser_utils {
     }
 
 }
+?>

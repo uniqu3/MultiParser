@@ -35,7 +35,7 @@ if (isset($params['cancel'])) {
     $this->Redirect($id, 'defaultadmin', $returnid);
 }
 if (!isset($params['item_id']) || !($item = DoGetExport::retrieveById($params['item_id']))) {
-    $item = new MultiParser_utils();
+    $item = new DoGetExport();
 }
 if (isset($params['submit']) || isset($params['apply'])) {
 
@@ -46,7 +46,7 @@ if (isset($params['submit']) || isset($params['apply'])) {
     $item->save();
 
     if (isset($params['submit'])) {
-        $this->Redirect($id, 'defaultadmin', $returnid);
+        $this->Redirect($id, 'defaultadmin', $returnid, array('active_tab' => 'exportitems'));
     }
 }
 $smarty->assign('form_start', $this->CreateFormStart($id, 'admin_manage_exportitem', $returnid));

@@ -46,5 +46,6 @@ switch($current_version) {
         $dict->ExecuteSQLArray($sqlarray);
 }
 
+$this->SetPreference('save_file',1);
 $this->Audit(0, $this->Lang('friendlyname'), $this->Lang('upgraded', $this->GetVersion()));
 ?>

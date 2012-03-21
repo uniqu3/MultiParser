@@ -61,6 +61,7 @@ $this->SetTemplate('rss', '
 $this->CreatePermission('Manage MultiParser', 'Manage MultiParser');
 // Preferences
 $this->setPreference('cache', 900);
+$this->SetPreference('save_file',1);
 // Templates
 $this->setPreference('auth_sites', serialize(array()));
 // put mention into the admin log

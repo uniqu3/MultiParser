@@ -13,7 +13,7 @@
 	<tbody>
 		{foreach from=$templates item=entry}
 		<tr class="{cycle values='row1,row2'}">
-			<td>{$entry->name}</td><td>{$entry->editlink}</td><td>{$entry->deletelink}</td>
+			<td>{$entry->edit_url}</td><td>{$entry->editlink}</td><td>{$entry->deletelink}</td>
 		</tr>
 		{/foreach}
 	</tbody>

@@ -21,9 +21,7 @@
 		{$options_title}
 	</legend>
 	<div class="pageoverflow">
-		<p class="pagetext">
 			{$auth_url_title}:
-		</p>
 		<p class="pageinput">
 			{$auth_url}
 		</p>
@@ -36,6 +34,17 @@
 			{$cache}
 		</p>
 	</div>
+</fieldset>
+<fieldset>
+	<legend>
+		{$export_title}
+	</legend>
+	<div class="pageoverflow">
+		<p class="pageinput">
+			{$save_file_input} {$save_file_title}
+		</p>
+	</div>	
+</fieldset>	
 	<div class="pageoverflow">
 		<p class="pagetext">
 			&nbsp;
@@ -44,4 +53,3 @@
 			{$submit_options}{$cancel}
 		</p>
 	</div>
-</fieldset>

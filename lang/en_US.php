@@ -31,9 +31,11 @@ $lang['code'] = 'Code';
 $lang['edit_template'] = 'Edit Template';
 $lang['delete_template'] = 'Delete Template';
 // Options
-$lang['options_title'] = 'Options';
+$lang['options_title'] = 'Items Options';
 $lang['cache'] = 'Feed cache timeout';
 $lang['auth_url'] = 'Authorized url';
+$lang['export_title'] = 'Export Items Options';
+$lang['save_file_title'] = 'Save Content to file';
 //Items
 $lang['item_title'] = 'Title';
 $lang['item_type'] = 'Item Type';
