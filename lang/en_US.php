@@ -19,6 +19,8 @@ $lang['submit'] = 'Submit';
 $lang['apply'] = 'Apply';
 $lang['restore'] = 'Restore';
 $lang['cancel'] = 'Cancel';
+$lang['yes'] = 'Yes';
+$lang['no'] = 'No';
 // Tabs
 $lang['title_items'] = 'Items';
 $lang['title_exportitems'] = 'Export Items';
@@ -56,6 +58,7 @@ $lang['exportitem_url'] = 'File URL';
 $lang['title_item_template'] = 'Template';
 $lang['title_item_output'] = 'Generated Content';
 $lang['generated_template'] = 'Content Output';
+$lang['dir_title'] = 'Path to file';
 //Params
 $lang['help_param_action'] = 'Specifies the module action. Possible values are;
 <ul>

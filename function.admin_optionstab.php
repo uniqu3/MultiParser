@@ -56,7 +56,6 @@ if (isset($params['auth_url']) && $params['auth_url'] != '') {
 }
 
 $sites = array();
-
 foreach ($auth_sites as $site) {
     $sites[] = array('url' => $site, 'delete' => $this->CreateLink($id, 'admin_delete_auth_url', $returnid, $admintheme->DisplayImage('icons/system/delete.gif', $site, '', '', 'systemicon'), array('url' => $site), ''));
 }
@@ -66,11 +65,23 @@ $smarty->assign('auth_url_title', $this->Lang('auth_url'));
 $smarty->assign('auth_url', $this->CreateInputText($id, 'auth_url', null, 80));
 
 // Export items options
-$this->SetPreference('save_file', (isset($params['save_file']) ? 1 : 0));
-$smarty->assign('save_file_input', $this->CreateInputCheckbox($id, 'save_file', 1, $this->GetPreference('save_file')));
-
 $smarty->assign('export_title', $this->Lang('export_title'));
 $smarty->assign('save_file_title', $this->Lang('save_file_title'));
+// save file?
+$options = array(
+    $this->Lang('yes') => 1,
+    $this->Lang('no') => 0
+    );
+if (isset($params['save_file'])) {
+    $this->SetPreference('save_file', $params['save_file']);
+    }
+$smarty->assign('save_file_input', $this->CreateInputDropdown($id, 'save_file', $options, -1, $this->GetPreference('save_file', 1)));
+// save dir
+if (isset($params['dir'])) {
+    $this->SetPreference('dir', $params['dir']);
+}
+$smarty->assign('dir_title', $this->Lang('dir_title'));
+$smarty->assign('dir_input', $this->CreateInputText($id, 'dir', $this->GetPreference('dir', '_mp'), 60));
 
 $smarty->assign('submit_options', $this->CreateInputSubmit($id, 'submit_options', $this->Lang('submit')));
 $smarty->assign('cancel', $this->CreateInputSubmit($id, 'cancel', $this->Lang('cancel')));

@@ -8,12 +8,18 @@ class DoGetExport extends MultiParser_utils {
     }
 
     protected function getCachePath() {
-        return TMP_CACHE_LOCATION . '/mp_' . munge_string_to_url($this->GetTitle() . $this->GetId(), true) . '.' . strtolower($this->GetType());
+        $config = cms_utils::get_config();
+        $mod    = cms_utils::get_module('MultiParser');
+        return cms_join_path($config['uploads_path'], $mod->GetPreference('dir')) . DIRECTORY_SEPARATOR . 'mp_' . munge_string_to_url($this->GetTitle() . $this->GetId(), true) . '.' . strtolower($this->GetType());
     }
 
     protected function saveContents() {
-        $mod = cms_utils::get_module('MultiParser');
+        $config = cms_utils::get_config();
+        $mod    = cms_utils::get_module('MultiParser');
         if ($mod->GetPreference('save_file') == 1) {
+            if (!file_exists(cms_join_path($config['uploads_path'], $mod->GetPreference('dir')))) {
+                @mkdir(cms_join_path($config['uploads_path'], $mod->GetPreference('dir')), 0755, true);
+            }
             file_put_contents($this->getCachePath(), $mod->ProcessTemplateFromData($this->GetItemContent()));
         }
     }

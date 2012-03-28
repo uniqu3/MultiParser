@@ -60,10 +60,10 @@ $this->SetTemplate('rss', '
 // permissions
 $this->CreatePermission('Manage MultiParser', 'Manage MultiParser');
 // Preferences
-$this->setPreference('cache', 900);
-$this->SetPreference('save_file',1);
+$this->SetPreference('cache', 900);
+$this->SetPreference('save_file', 1);
 // Templates
-$this->setPreference('auth_sites', serialize(array()));
+$this->SetPreference('auth_sites', serialize(array()));
 // put mention into the admin log
 $this->Audit(0, $this->Lang('friendlyname'), $this->Lang('installed', $this->GetVersion()));
 ?>

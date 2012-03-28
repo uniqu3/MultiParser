@@ -21,7 +21,9 @@
 		{$options_title}
 	</legend>
 	<div class="pageoverflow">
+		<p class="pagetext">
 			{$auth_url_title}:
+		</p>
 		<p class="pageinput">
 			{$auth_url}
 		</p>
@@ -40,10 +42,21 @@
 		{$export_title}
 	</legend>
 	<div class="pageoverflow">
+		<p class="pagetext">
+			{$save_file_title}:
+		</p>		
 		<p class="pageinput">
-			{$save_file_input} {$save_file_title}
+			{$save_file_input}
 		</p>
 	</div>	
+	<div class="pageoverflow">
+		<p class="pagetext">
+			{$dir_title}:
+		</p>
+		<p class="pageinput">
+			{$dir_input}
+		</p>
+	</div>		
 </fieldset>	
 	<div class="pageoverflow">
 		<p class="pagetext">
