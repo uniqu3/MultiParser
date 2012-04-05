@@ -1,5 +1,5 @@
 <?php
-class MultiParser_utils extends MultiParser {
+class MultiParser_utils {
     var $id;
     var $title;
     var $item_url;
